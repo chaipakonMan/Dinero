@@ -16,6 +16,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { AnalyzerComponent } from './analyzer/analyzer.component';
 import { FooterComponent } from './footer/footer.component';
+import { PlaningToAnalyzerServiceComponent } from './services/PlaningToAnalyzerServiceComponent';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { FooterComponent } from './footer/footer.component';
     MatInputModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [PlaningToAnalyzerServiceComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

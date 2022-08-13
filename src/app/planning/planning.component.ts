@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-type cat = {
-  title: string;
-  amount: number;
-};
+import { Category } from '../models/Category';
+import { PlaningToAnalyzerServiceComponent } from '../services/PlaningToAnalyzerServiceComponent';
 
 @Component({
   selector: 'app-planning',
@@ -18,18 +15,18 @@ export class PlanningComponent implements OnInit {
   selectedOptions = [];
   budgetAmount:number = 0;
 
-  SelectedOptionsWithBudgetAmount: cat[] = [];
+  SelectedOptionsWithBudgetAmount: Category[] = [];
 
   currentPercent:number = 0;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private planingToAnalyzerServiceComponent: PlaningToAnalyzerServiceComponent) { }
 
   ngOnInit(): void {
   }
 
   next() {
     for(var val of this.selectedOptions){
-      const temp: cat = {
+      const temp: Category = {
         title: val,
         amount: 0
       }
@@ -43,6 +40,7 @@ export class PlanningComponent implements OnInit {
     console.log(this.budgetAmount)
     console.log(this.currentPercent)
     console.log(this.SelectedOptionsWithBudgetAmount)
+    this.planingToAnalyzerServiceComponent.setBudgets(this.SelectedOptionsWithBudgetAmount);
     this.router.navigateByUrl('/analyzer');
   }
   

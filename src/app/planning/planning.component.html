@@ -1,0 +1,63 @@
+<app-toolbar></app-toolbar>
+
+<div *ngIf="!flag">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Budget Planer</mat-card-title>
+        </mat-card-header>
+    
+        <mat-card-content>
+            <p>Pick Month/ title</p>
+    
+            <mat-form-field>
+                <mat-label>Budget Amount</mat-label>
+                <input matInput [(ngModel)]="budgetAmount" value="0">
+            </mat-form-field>
+            
+            <p>
+                Options selected: {{list.selectedOptions.selected.length}}
+            </p>
+            
+            <mat-selection-list #list [(ngModel)]="selectedOptions">
+                <mat-list-option *ngFor="let cate of expensesCategories" [value]="cate">
+                    {{cate}}
+                </mat-list-option>
+            </mat-selection-list>
+            
+        </mat-card-content>
+    
+        <mat-card-actions>
+            <button mat-flat-button color="primary" (click)="next()">Next</button>
+        </mat-card-actions>
+    </mat-card>
+    <br><br><br><br>
+</div>
+
+<div *ngIf="flag">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Budget Planer</mat-card-title>
+            <mat-card-subtitle>Dynamically grab the title!</mat-card-subtitle>
+        </mat-card-header>
+    
+        <mat-card-content>
+            <p>Your budget amount: {{budgetAmount}}</p>
+            <tr *ngFor="let category of SelectedOptionsWithBudgetAmount; let i = index">
+                <td>
+                    <div>
+                        <mat-form-field>
+                          <input matInput [(ngModel)]="category.amount" placeholder="amount of your budget for {{category.title}}" />
+                        </mat-form-field>
+                    </div>
+                </td>
+            </tr>
+        </mat-card-content>
+    
+        <mat-card-actions>
+            <button mat-flat-button color="primary" (click)="submit()">Submit</button>
+        </mat-card-actions>
+    </mat-card>
+    <br><br><br><br>
+</div>
+
+<app-footer></app-footer>

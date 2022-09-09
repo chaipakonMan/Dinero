@@ -1,4 +1,5 @@
 export class Category { 
         title: string;
-        amount: number;
+        budgetAmount: number;
+        expense: number;
 }

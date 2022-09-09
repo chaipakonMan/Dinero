@@ -1,7 +1,26 @@
 <app-toolbar></app-toolbar>
 
-<p>analyzer works!</p>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>{{BudgetTitle}}</mat-card-title>
+        <mat-card-subtitle>Total budgets: ${{TotalBudgetAmount}}</mat-card-subtitle>
+        <mat-card-subtitle>Current expenses: ${{currentExpenese}}</mat-card-subtitle>
+    </mat-card-header>
+    <!-- <mat-progress-bar mode="determinate" value="50"></mat-progress-bar> -->
+    <mat-card-content>
+            <tr *ngFor="let category of OptionsWithBudgetAmount; let i = index">
+                <td>
+                    <div>
+                        <p>{{category.title}} ${{category.expense}} of ${{category.budgetAmount}}</p>
+                    </div>
+                </td>
+            </tr>
+    </mat-card-content>
 
-<button mat-flat-button color="primary" (click)="check()">JustForDevelopment</button>
+    <mat-card-actions>
+        <button mat-flat-button color="primary" (click)="check()">Additional Expenses</button>
+    </mat-card-actions>
+
+</mat-card>
 
 <app-footer></app-footer>

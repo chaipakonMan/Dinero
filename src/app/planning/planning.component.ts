@@ -9,7 +9,7 @@ import { PlaningToAnalyzerServiceComponent } from '../services/PlaningToAnalyzer
   styleUrls: ['./planning.component.css']
 })
 export class PlanningComponent implements OnInit {
-
+  budgetTitle: String = "";
   flag: boolean = false;
   expensesCategories: string[] = ['Bills&Util', 'Foods&Drinks', 'Grocery', 'Personal', 'Gas', 'Shopping', 'Enterainment', 'Travel'];
   selectedOptions = [];
@@ -28,7 +28,8 @@ export class PlanningComponent implements OnInit {
     for(var val of this.selectedOptions){
       const temp: Category = {
         title: val,
-        amount: 0
+        budgetAmount: 0,
+        expense: 0
       }
       this.SelectedOptionsWithBudgetAmount.push(temp)
     }
@@ -40,7 +41,10 @@ export class PlanningComponent implements OnInit {
     console.log(this.budgetAmount)
     console.log(this.currentPercent)
     console.log(this.SelectedOptionsWithBudgetAmount)
+    console.log(this.budgetTitle)
     this.planingToAnalyzerServiceComponent.setBudgets(this.SelectedOptionsWithBudgetAmount);
+    this.planingToAnalyzerServiceComponent.setTotalBudgetAmount(this.budgetAmount);
+    this.planingToAnalyzerServiceComponent.setBudgetName(this.budgetTitle);
     this.router.navigateByUrl('/analyzer');
   }
   

@@ -7,8 +7,11 @@
         </mat-card-header>
     
         <mat-card-content>
-            <p>Pick Month/ title</p>
-    
+            <mat-form-field>
+                <mat-label>Budget Title</mat-label>
+                <input matInput [(ngModel)]="budgetTitle" value="">
+            </mat-form-field>
+            <br>
             <mat-form-field>
                 <mat-label>Budget Amount</mat-label>
                 <input matInput [(ngModel)]="budgetAmount" value="0">
@@ -37,7 +40,7 @@
     <mat-card>
         <mat-card-header>
             <mat-card-title>Budget Planer</mat-card-title>
-            <mat-card-subtitle>Dynamically grab the title!</mat-card-subtitle>
+            <mat-card-subtitle>{{budgetTitle}}</mat-card-subtitle>
         </mat-card-header>
     
         <mat-card-content>
@@ -46,7 +49,7 @@
                 <td>
                     <div>
                         <mat-form-field>
-                          <input matInput [(ngModel)]="category.amount" placeholder="amount of your budget for {{category.title}}" />
+                          <input matInput [(ngModel)]="category.budgetAmount" placeholder="amount of your budget for {{category.title}}" />
                         </mat-form-field>
                     </div>
                 </td>
